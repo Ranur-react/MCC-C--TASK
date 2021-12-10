@@ -85,7 +85,7 @@ namespace Manajemen_Kasir_MCC_Ranur
         }
         public static void ShowMenu(string AppTitle)
         {
-            Console.WriteLine("==========="+AppTitle+"=============");
+            Console.WriteLine("======================"+AppTitle+"=====================");
             Console.WriteLine("");
             //tes
             String decodeStringMenu = "";
@@ -95,9 +95,9 @@ namespace Manajemen_Kasir_MCC_Ranur
                 decodeStringMenu +=" "+i+" ("+Index+")|";
                 ;
             }
-            Console.WriteLine("____________________________________________________");
+            Console.WriteLine("____________________________________________________________________");
             Console.WriteLine("MENU: | "+decodeStringMenu);
-            Console.WriteLine("____________________________________________________");
+            Console.WriteLine("____________________________________________________________________");
             Console.WriteLine("");
             Console.WriteLine("Pres Key Number 1 -"+Index+" to select Menu || press Q for Exit Sessions");
 
