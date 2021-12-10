@@ -12,17 +12,13 @@ namespace Manajemen_Kasir_MCC_Ranur
         public static List<int> product_stock = new List<int>();
         static void Main(string[] args)
         {
-            /*          Console.WriteLine("1. Create Menu");
-                        Console.WriteLine("2. Creta Input produk");
-                        Console.WriteLine("3. Create Produk Selling Simulations");*/
-
+           
             //Panggil Methode Menu
             ShowMenu("EASY SHOP CHASIER APP");
             //panggil Methode Input
                 InputProduk();
                 TampilkanHasilInput();
             //panggil methode footer menu
-            FootterMenu();
 
         }
 
@@ -87,35 +83,10 @@ namespace Manajemen_Kasir_MCC_Ranur
 
 
         }
-
-        private static void FootterMenu()
-        {
-            tbodyLine tl = new tbodyLine();
-            tl.setWidth(80);
-            tl.setAlign("left");
-            tl.field("");
-            tl.field("Created of Rahmat Nur-MCC Bacth 61");
-        }
-
         public static void ShowMenu(string AppTitle)
         {
-            Table tb = new Table();
-            tb.setWidth(80);
-            tb.setAlign("center");
-
-            tbody tr = new tbody();
-            tr.setWidth(80);
-            tr.setAlign("center");
-
-
-            tbodySpace ts = new tbodySpace();
-            ts.setWidth(80);
-            ts.setAlign("left");
-
-
-
-            tb.fieldHeader(AppTitle);
-
+            Console.WriteLine("==========="+AppTitle+"=============");
+            Console.WriteLine("");
             //tes
             String decodeStringMenu = "";
             int Index = 0;
@@ -124,9 +95,11 @@ namespace Manajemen_Kasir_MCC_Ranur
                 decodeStringMenu +=" "+i+" ("+Index+")|";
                 ;
             }
-            tr.field("|"+decodeStringMenu);
-            tr.field("Pres Key Number 1 -"+Index+" to change Menu || press Q for Exit Sessions");
-            ts.field("");
+            Console.WriteLine("____________________________________________________");
+            Console.WriteLine("MENU: | "+decodeStringMenu);
+            Console.WriteLine("____________________________________________________");
+            Console.WriteLine("");
+            Console.WriteLine("Pres Key Number 1 -"+Index+" to select Menu || press Q for Exit Sessions");
 
         }
     }
