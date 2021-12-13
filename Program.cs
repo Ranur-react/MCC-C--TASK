@@ -94,13 +94,14 @@ namespace ManajemenKasirMccRanur
             Console.WriteLine("\t\t~Product Order Selected ~");
             Console.WriteLine("_____________________________________________________________\n");
 
+
             bool terusInput = true;
             while (terusInput)
             {
                 Console.WriteLine("\n\n");
                 Console.WriteLine("Product Available List:\n");
                 ExtrakListProduk();
-                String[] listForm = { "No/Code Product Selected", "Qty Produk", "pay value " };
+                String[] listForm = { "No/Code Product Selected", "Qty Product", "Pay value " };
                 int kode = 0;
                 int qty = 0;
                 Double bayar = 0;
@@ -114,6 +115,7 @@ namespace ManajemenKasirMccRanur
                     //pseudocode - Input
 
                     Console.Write($"Entry {listForm[index]} \t:");
+
                     get = Console.ReadLine();
                     if (get == "Q" || get == "q")
                     {
@@ -204,6 +206,7 @@ namespace ManajemenKasirMccRanur
                                     index -= 1;
                                 }
                                
+
                                 break;
                         }
 
@@ -212,6 +215,7 @@ namespace ManajemenKasirMccRanur
                 dataKe++;
             }
             Console.WriteLine("Back to menu . .\n\n\n");
+
 
 
         }
@@ -240,6 +244,7 @@ namespace ManajemenKasirMccRanur
                 Console.WriteLine("");
             }
             Console.WriteLine("_____________________________________________________________\n");
+
         }
 
         static void InputProduk()
