@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Manajemen_Kasir_MCC_Ranur
+namespace ManajemenKasirMccRanur
 {
 	//Table Design  - - - - - - -
 	public class Layout
@@ -10,7 +10,7 @@ namespace Manajemen_Kasir_MCC_Ranur
 		public int x = 60;
 		public String DefaultBodySpace = " ";
 		public Layout()
-		{
+		{ 
 			//constructor;
 		}
 		public Layout(int v)

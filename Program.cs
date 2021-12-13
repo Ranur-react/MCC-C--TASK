@@ -1,106 +1,337 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Manajemen_Kasir_MCC_Ranur
+namespace ManajemenKasirMccRanur
 
 {
     class Program
     {
         public static string[] listMenu = new string[3] { "Input Produk", "Jual Produk", "Exit" };
-        public static List<string> product_name=new List<string>();
-        public static List<Double> product_price = new List<Double>();
-        public static List<int> product_stock = new List<int>();
+        public static List<string> productName = new List<string>();
+        public static List<Double> productPrice = new List<Double>();
+        public static List<int> productStock = new List<int>();
+        public static List<int> orderCode = new List<int>();
+        public static List<int> orderQty = new List<int>();
+        public static List<Double> orderPayCost = new List<Double>();
         static void Main(string[] args)
         {
-           
-            //Panggil Methode Menu
-            ShowMenu("EASY SHOP CHASIER APP");
-            //panggil Methode Input
-                InputProduk();
-                TampilkanHasilInput();
-            //panggil methode footer menu
-
+            MainMenu();
         }
 
-        private static void TampilkanHasilInput()
+        private static void MainMenu()
         {
-            Console.WriteLine("List Produk:");
-            int no = 0;
-            for (int i = 0; i < product_name.Count; i++) {
-                no++;
-                Console.WriteLine(""+no+". "+product_name[i]);
-                Console.WriteLine("\t -Stock " + product_stock[i]+" item");
-                Console.WriteLine("\t -price $" + product_price[i]);
-                Console.WriteLine("");
+            bool loopState = true;
+            while (loopState)
+            {
+                //Panggil Methode Menu
+                loopState = ShowMenu("EASY SHOP CHASIER APP");
             }
+            Console.WriteLine("Stop App");
+
+        }
+        public static bool ShowMenu(string AppTitle)
+        {
+            bool state = true;
+            int index = 0;
+            String decodeStringMenu = "";
+
+
+            Console.WriteLine($"=============================================================\n");
+            Console.WriteLine($"\t\t{AppTitle}");
+            Console.WriteLine($"=============================================================\n");
+            foreach (String i in listMenu)
+            {
+                index++;
+                decodeStringMenu += $" {i} ({index})|";
+                ;
+            }
+            Console.WriteLine($"MENU: | {decodeStringMenu}");
+            Console.WriteLine("_____________________________________________________________\n");
+            Console.WriteLine($"|Pres Key Number 1 -{index} to select Menu \n| press Q for Exit Sessions\n\n");
+            Console.Write("Select Menu: ");
+            String options = Console.ReadLine();
+            if (options == "Q" || options == "q")
+            {
+                Console.WriteLine("Quit press");
+                state = false;
+                return state;
+
+            }
+            else
+            {
+                switch (Convert.ToInt32(options))
+                {
+                    case 1:
+                        /*Input Produk*/
+                         //panggil Methode Input
+                         InputProduk();
+                        TampilkanHasilInput();
+                        //panggil methode footer menu
+                        break;
+                    case 2:
+                        /*Jual Produk*/
+                         JualProduk();
+                        break;
+                    default:
+                        /*exit*/
+                         Console.WriteLine("Aplikasi Akana keluar dengan Sendirinya");
+                        state = false;
+                        break;
+                }
+            }
+
+            return state;
+
         }
 
-        static void InputProduk()
+        private static void JualProduk()
         {
-            bool terusInput = true;
-            while (terusInput) {
-                String[] List_Form = { "Nama", "Harga", "Stock" };
-                String name="";
-                Double price=0;
-                int stock=0;
+            FormJualProduk();
+        }
+        static void FormJualProduk()
+        {
+            Console.WriteLine("_____________________________________________________________\n");
+            Console.WriteLine("\t\t~Product Order Selected ~");
+            Console.WriteLine("_____________________________________________________________\n");
 
-                int index = 0;
+            bool terusInput = true;
+            while (terusInput)
+            {
+                Console.WriteLine("\n\n");
+                Console.WriteLine("Product Available List:\n");
+                ExtrakListProduk();
+                String[] listForm = { "No/Code Product Selected", "Qty Produk", "pay value " };
+                int kode = 0;
+                int qty = 0;
+                Double bayar = 0;
+
                 int dataKe = 0;
                 string get = "";
-                dataKe++;
-                Console.WriteLine("\t Data Ke [" + product_name.Count + "]");
-                foreach (var item in List_Form)
+
+                Console.WriteLine($"\t Purchase order  {productName.Count}.th");
+                for (int index = 0; index < listForm.Length; index++)
                 {
-                    Console.Write("Masukan " + item + " Produk \t:");
+                    //pseudocode - Input
+
+                    Console.Write($"Entry {listForm[index]} \t:");
                     get = Console.ReadLine();
-                    if (get=="Q"||get =="q")
+                    if (get == "Q" || get == "q")
                     {
                         terusInput = false;
                         Console.WriteLine("End Input");
                         break;
                     }
-                    else {
+                    else
+                    {
+                        switch (index)
+                        {
+                            case 0:
+                                try
+                                {
+                                    kode = Convert.ToInt32(get) - 1;
+
+                                }
+                                catch (FormatException e)
+                                {
+
+                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    Console.WriteLine($"Eror Exception: {e.Message}");
+                                    Console.WriteLine("");
+                                    index -= 1;
+                                }
+                                catch (Exception e) {
+                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    Console.WriteLine($"Eror Exception: {e.Message}");
+                                    Console.WriteLine("");
+                                    index -= 1;
+                                }
+                                break;
+                            case 1:
+                               
+                                try
+                                {
+                                    qty = Convert.ToInt32(get);
+                                    double ammount = productPrice[kode] * qty;
+                                    Console.WriteLine("");
+                                    Console.WriteLine($"Order Ammount : ${ammount}");
+                                }
+                                catch (FormatException e)
+                                {
+
+                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    Console.WriteLine($"Eror Exception: {e.Message}");
+                                    Console.WriteLine("");
+                                    index -= 1;
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    Console.WriteLine($"Eror Exception: {e.Message}");
+                                    Console.WriteLine("");
+                                    index -= 1;
+                                }
+
+                                break;
+                            case 2:
+                                try
+                                {
+                                    orderCode.Add(kode);
+                                    orderQty.Add(qty);
+                                    orderPayCost.Add(Convert.ToInt32(get));
+                                    Console.WriteLine("_____________________________________________________________\n");
+
+                                    productStock[kode] = productStock[kode] - qty;
+                                    //pseudocode - Process
+                                    double kembalian = orderPayCost[dataKe] - (productPrice[kode] * qty);
+                                    //pseudocode - Output
+                                    Console.WriteLine($"Returned : ${kembalian}");
+                                    Console.WriteLine("----------------------------------\n\n");
+                                }
+                                catch (FormatException e)
+                                {
+
+                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    Console.WriteLine($"Eror Exception: {e.Message}");
+                                    Console.WriteLine("");
+                                    index -= 1;
+                                }
+                                catch (Exception e)
+                                {
+
+                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    Console.WriteLine($"Eror Exception: {e.Message}");
+                                    Console.WriteLine("");
+                                    index -= 1;
+                                }
+                               
+                                break;
+                        }
+
+                    }
+                }
+                dataKe++;
+            }
+            Console.WriteLine("Back to menu . .\n\n\n");
+
+
+        }
+        private static void ExtrakListProduk()
+        {
+            int no = 0;
+            for (int i = 0; i < productName.Count; i++)
+            {
+                no++;
+                Console.WriteLine($"{no}. {productName[i] }\n\t ~ Price : ${productPrice[i]} \n [{productStock[i]}] stock left");
+                Console.WriteLine("");
+            }
+        }
+
+        private static void TampilkanHasilInput()
+        {
+            Console.WriteLine("_____________________________________________________________\n");
+            Console.WriteLine("Product List:");
+            int no = 0;
+            for (int i = 0; i < productName.Count; i++)
+            {
+                no++;
+                Console.WriteLine($"{no}. { productName[i]}");
+                Console.WriteLine($"\t -Stock {productStock[i]} item");
+                Console.WriteLine($"\t -price ${productPrice[i]}");
+                Console.WriteLine("");
+            }
+            Console.WriteLine("_____________________________________________________________\n");
+        }
+
+        static void InputProduk()
+        {
+            Console.WriteLine("_____________________________________________________________\n");
+            Console.WriteLine("\t\t~Product Entry Selected ~");
+            Console.WriteLine("_____________________________________________________________\n");
+            bool terusInput = true;
+            while (terusInput)
+            {
+                String[] listForm = { "Name", "Price", "Stock" };
+                String name = "";
+                Double price = 0;
+                int stock = 0;
+
+                /*int index = 0;*/
+                int dataKe = 0;
+                string get = "";
+                dataKe++;
+                Console.WriteLine($"\t [{productName.Count}] th Product Entry");
+                
+                    for(int index = 0; index < listForm.Length; index++)
+                {
+                    Console.Write($"Enter Product {listForm[index]}  \t:");
+                    get = Console.ReadLine();
+                    if (get == "Q" || get == "q")
+                    {
+                        terusInput = false;
+                        Console.WriteLine("End Input");
+                        break;
+                    }
+                    else
+                    {
                         switch (index)
                         {
                             case 0:
                                 name = get;
                                 break;
                             case 1:
-                                price = Convert.ToDouble(get);
+
+                                try
+                                {
+                                    price = Convert.ToDouble(get);
+                                }
+                                catch (FormatException e) {
+                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    Console.WriteLine($"Eror Exception: {e.Message}");
+                                    Console.WriteLine("");
+                                    index -= 1;
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    Console.WriteLine($"Eror Exception: {e.Message}");
+                                    Console.WriteLine("");
+                                    index -= 1;
+                                }
                                 break;
                             case 2:
-                                product_name.Add(name);
-                                product_price.Add(price);
-                                product_stock.Add(Convert.ToInt32(get));
+                                try
+                                {
+                                    productName.Add(name);
+                                    productPrice.Add(price);
+                                    productStock.Add(Convert.ToInt32(get));
+                                }
+                                catch (FormatException e)
+                                {
+                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    Console.WriteLine($"Eror Exception: {e.Message}");
+                                    Console.WriteLine("");
+                                    index -= 1;
+                                }
+                                catch (Exception e)
+                                {
+
+                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must number as money type");
+                                    Console.WriteLine($"Error Exception: {e.Message}");
+                                    Console.WriteLine("");
+                                    index -= 1;
+                                }
+
                                 break;
                         }
                     }
-                    index++;
+                    //index++;
                 }
-                index = 0;
+               // index = 0;
             }
             Console.WriteLine("return to menu . .\n\n\n");
 
 
         }
-        public static void ShowMenu(string AppTitle)
-        {
-            Console.WriteLine("======================"+AppTitle+"=====================");
-            Console.WriteLine("");
-            //tes
-            String decodeStringMenu = "";
-            int Index = 0;
-            foreach (String i in listMenu) {
-                Index++;
-                decodeStringMenu +=" "+i+" ("+Index+")|";
-                ;
-            }
-            Console.WriteLine("____________________________________________________________________");
-            Console.WriteLine("MENU: | "+decodeStringMenu);
-            Console.WriteLine("____________________________________________________________________");
-            Console.WriteLine("");
-            Console.WriteLine("Pres Key Number 1 -"+Index+" to select Menu || press Q for Exit Sessions");
 
-        }
     }
 }

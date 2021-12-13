@@ -1,0 +1,14 @@
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\bin\Debug\netcoreapp3.1\ManajemenKasirMccRanur.exe
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\bin\Debug\netcoreapp3.1\ManajemenKasirMccRanur.deps.json
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\bin\Debug\netcoreapp3.1\ManajemenKasirMccRanur.runtimeconfig.json
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\bin\Debug\netcoreapp3.1\ManajemenKasirMccRanur.runtimeconfig.dev.json
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\bin\Debug\netcoreapp3.1\ManajemenKasirMccRanur.dll
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\bin\Debug\netcoreapp3.1\ManajemenKasirMccRanur.pdb
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\obj\Debug\netcoreapp3.1\ManajemenKasirMccRanur.csproj.AssemblyReference.cache
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\obj\Debug\netcoreapp3.1\ManajemenKasirMccRanur.GeneratedMSBuildEditorConfig.editorconfig
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\obj\Debug\netcoreapp3.1\ManajemenKasirMccRanur.AssemblyInfoInputs.cache
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\obj\Debug\netcoreapp3.1\ManajemenKasirMccRanur.AssemblyInfo.cs
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\obj\Debug\netcoreapp3.1\ManajemenKasirMccRanur.csproj.CoreCompileInputs.cache
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\obj\Debug\netcoreapp3.1\ManajemenKasirMccRanur.dll
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\obj\Debug\netcoreapp3.1\ManajemenKasirMccRanur.pdb
+D:\MCC\C#-Practice\Manajemen_Kasir-MCC-Ranur\Manajemen_Kasir-MCC-Ranur\obj\Debug\netcoreapp3.1\ManajemenKasirMccRanur.genruntimeconfig.cache

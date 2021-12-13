@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MCC\\C#-Practice\\Manajemen_Kasir-MCC-Ranur\\Manajemen_Kasir-MCC-Ranur\\Manajemen_Kasir-MCC-Ranur.csproj",
-      "projectName": "Manajemen_Kasir-MCC-Ranur",
-      "projectPath": "D:\\MCC\\C#-Practice\\Manajemen_Kasir-MCC-Ranur\\Manajemen_Kasir-MCC-Ranur\\Manajemen_Kasir-MCC-Ranur.csproj",
+      "projectUniqueName": "D:\\MCC\\C#-Practice\\Manajemen_Kasir-MCC-Ranur\\Manajemen_Kasir-MCC-Ranur\\ManajemenKasirMccRanur.csproj",
+      "projectName": "ManajemenKasirMccRanur",
+      "projectPath": "D:\\MCC\\C#-Practice\\Manajemen_Kasir-MCC-Ranur\\Manajemen_Kasir-MCC-Ranur\\ManajemenKasirMccRanur.csproj",
       "packagesPath": "C:\\Users\\rahma\\.nuget\\packages\\",
       "outputPath": "D:\\MCC\\C#-Practice\\Manajemen_Kasir-MCC-Ranur\\Manajemen_Kasir-MCC-Ranur\\obj\\",
       "projectStyle": "PackageReference",
