@@ -4,19 +4,18 @@ using System.Collections.Generic;
 namespace ManajemenKasirMccRanur
 
 {
-    class Program
+   public  class ProgramLayout
     {
-        public static string[] listMenu = new string[3] { "Entry Product", "Order Product", "Exit" };
+        public static string[] listMenu = new string[3] { "Input Produk", "Jual Produk", "Exit" };
         public static List<string> productName = new List<string>();
         public static List<Double> productPrice = new List<Double>();
         public static List<int> productStock = new List<int>();
         public static List<int> orderCode = new List<int>();
         public static List<int> orderQty = new List<int>();
         public static List<Double> orderPayCost = new List<Double>();
-        static void Main(string[] args)
+        public ProgramLayout()
         {
             MainMenu();
-            //new ProgramLayout();
         }
 
         private static void MainMenu()
@@ -27,7 +26,7 @@ namespace ManajemenKasirMccRanur
                 //Panggil Methode Menu
                 loopState = ShowMenu("EASY SHOP CHASIER APP");
             }
-            Console.WriteLine("Stop App");
+            EachTableLine("Stop App");
 
         }
         public static bool ShowMenu(string AppTitle)
@@ -35,25 +34,21 @@ namespace ManajemenKasirMccRanur
             bool state = true;
             int index = 0;
             String decodeStringMenu = "";
-
-
-            Console.WriteLine($"=============================================================\n");
-            Console.WriteLine($"\t\t{AppTitle}");
-            Console.WriteLine($"=============================================================\n");
+            EachTableHeader(AppTitle);
             foreach (String i in listMenu)
             {
                 index++;
                 decodeStringMenu += $" {i} ({index})|";
                 ;
             }
-            Console.WriteLine($"Menu: | {decodeStringMenu}");
-            Console.WriteLine("_____________________________________________________________\n");
-            Console.WriteLine($"|Pres Key Number 1 -{index} to select Menu \n| press Q for Exit Sessions\n\n");
+            EachTableLine($"MENU: | {decodeStringMenu}");
+            EachTableLine($"|Pres Key  1 -{index} to select Menu | press Q for Exit Sessions");
+
             Console.Write("Select Menu: ");
             String options = Console.ReadLine();
             if (options == "Q" || options == "q")
             {
-                Console.WriteLine("Quit press");
+                EachTableBody("Process was stoped");
                 state = false;
                 return state;
 
@@ -64,9 +59,11 @@ namespace ManajemenKasirMccRanur
                 {
                     case 1:
                         /*Input Produk*/
-                         //panggil Methode Input
-                         InputProduk();
+                        InputProduk();
+                        EachTableLine("");
                         TampilkanHasilInput();
+                        EachTableLine("");
+
                         //panggil methode footer menu
                         break;
                     case 2:
@@ -75,7 +72,7 @@ namespace ManajemenKasirMccRanur
                         break;
                     default:
                         /*exit*/
-                         Console.WriteLine("Exit From App . . .");
+                        EachTableBody("Exit From App . . .");
                         state = false;
                         break;
                 }
@@ -85,23 +82,49 @@ namespace ManajemenKasirMccRanur
 
         }
 
+        private static void EachTableHeader(string v)
+        {
+            Table tb = new Table();
+            tbody tr = new tbody();
+            tbodyLine tl = new tbodyLine();
+            tbodySpace ts = new tbodySpace();
+            tb.setAlign("center");
+            tb.setWidth(60);
+            tb.fieldHeader(v);
+        }
+        private static void EachTableLine(string v)
+        {
+            Table tb = new Table();
+            tbody tr = new tbody();
+            tbodyLine tl = new tbodyLine();
+            tbodySpace ts = new tbodySpace();
+            tl.setAlign("center");
+            tl.setWidth(60);
+            tl.field(v);
+        }
+        private static void EachTableBody(string v)
+        {
+            Table tb = new Table();
+            tbody tr = new tbody();
+            tbodyLine tl = new tbodyLine();
+            tbodySpace ts = new tbodySpace();
+            ts.setAlign("left");
+            ts.setWidth(60);
+            ts.field(v);
+        }
+
         private static void JualProduk()
         {
             FormJualProduk();
         }
         static void FormJualProduk()
         {
-            Console.WriteLine("_____________________________________________________________\n");
-            Console.WriteLine("\t\t~Product Order Selected ~");
-            Console.WriteLine("_____________________________________________________________\n");
-
-
             bool terusInput = true;
             while (terusInput)
             {
-                Console.WriteLine("\n\n");
-                Console.WriteLine("Product Available List:\n");
+                EachTableBody("Product Available List:");
                 ExtrakListProduk();
+                EachTableLine("");
                 String[] listForm = { "No/Code Product Selected", "Qty Product", "Pay value " };
                 int kode = 0;
                 int qty = 0;
@@ -110,18 +133,18 @@ namespace ManajemenKasirMccRanur
                 int dataKe = 0;
                 string get = "";
 
-                Console.WriteLine($"\t Purchase order  {productName.Count}.th");
+                EachTableBody($" Purchase order  {productName.Count}.th");
                 for (int index = 0; index < listForm.Length; index++)
                 {
                     //pseudocode - Input
 
-                    Console.Write($"Entry {listForm[index]} \t:");
+                    EachTableBody($"Entry {listForm[index]} :");
 
                     get = Console.ReadLine();
                     if (get == "Q" || get == "q")
                     {
                         terusInput = false;
-                        Console.WriteLine("End Input");
+                        EachTableBody("End Input");
                         break;
                     }
                     else
@@ -137,15 +160,15 @@ namespace ManajemenKasirMccRanur
                                 catch (FormatException e)
                                 {
 
-                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
-                                    Console.WriteLine($"Eror Exception: {e.Message}");
-                                    Console.WriteLine("");
+                                    EachTableBody($"{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    EachTableBody($"Eror Exception: {e.Message}");
+                                    EachTableBody("");
                                     index -= 1;
                                 }
                                 catch (Exception e) {
-                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
-                                    Console.WriteLine($"Eror Exception: {e.Message}");
-                                    Console.WriteLine("");
+                                    EachTableBody($"{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    EachTableBody($"Eror Exception: {e.Message}");
+                                    EachTableBody("");
                                     index -= 1;
                                 }
                                 break;
@@ -155,22 +178,22 @@ namespace ManajemenKasirMccRanur
                                 {
                                     qty = Convert.ToInt32(get);
                                     double ammount = productPrice[kode] * qty;
-                                    Console.WriteLine("");
-                                    Console.WriteLine($"Order Ammount : ${ammount}");
+                                    EachTableBody("");
+                                    EachTableBody($"Order Ammount : ${ammount}");
                                 }
                                 catch (FormatException e)
                                 {
 
-                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
-                                    Console.WriteLine($"Eror Exception: {e.Message}");
-                                    Console.WriteLine("");
+                                    EachTableBody($"{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    EachTableBody($"Eror Exception: {e.Message}");
+                                    EachTableBody("");
                                     index -= 1;
                                 }
                                 catch (Exception e)
                                 {
-                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
-                                    Console.WriteLine($"Eror Exception: {e.Message}");
-                                    Console.WriteLine("");
+                                    EachTableBody($"{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    EachTableBody($"Eror Exception: {e.Message}");
+                                    EachTableBody("");
                                     index -= 1;
                                 }
 
@@ -181,29 +204,27 @@ namespace ManajemenKasirMccRanur
                                     orderCode.Add(kode);
                                     orderQty.Add(qty);
                                     orderPayCost.Add(Convert.ToInt32(get));
-                                    Console.WriteLine("_____________________________________________________________\n");
 
                                     productStock[kode] = productStock[kode] - qty;
                                     //pseudocode - Process
                                     double kembalian = orderPayCost[dataKe] - (productPrice[kode] * qty);
                                     //pseudocode - Output
-                                    Console.WriteLine($"Returned : ${kembalian}");
-                                    Console.WriteLine("----------------------------------\n\n");
+                                    EachTableBody($"Returned : ${kembalian}");
                                 }
                                 catch (FormatException e)
                                 {
 
-                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
-                                    Console.WriteLine($"Eror Exception: {e.Message}");
-                                    Console.WriteLine("");
+                                    EachTableBody($"{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    EachTableBody($"Eror Exception: {e.Message}");
+                                    EachTableBody("");
                                     index -= 1;
                                 }
                                 catch (Exception e)
                                 {
 
-                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
-                                    Console.WriteLine($"Eror Exception: {e.Message}");
-                                    Console.WriteLine("");
+                                    EachTableBody($"{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    EachTableBody($"Eror Exception: {e.Message}");
+                                    EachTableBody("");
                                     index -= 1;
                                 }
                                
@@ -215,7 +236,7 @@ namespace ManajemenKasirMccRanur
                 }
                 dataKe++;
             }
-            Console.WriteLine("Back to menu . .\n\n\n");
+            EachTableBody("Back to menu . .");
 
 
 
@@ -226,33 +247,29 @@ namespace ManajemenKasirMccRanur
             for (int i = 0; i < productName.Count; i++)
             {
                 no++;
-                Console.WriteLine($"{no}. {productName[i] }\n\t ~ Price : ${productPrice[i]} \n [{productStock[i]}] stock left");
-                Console.WriteLine("");
+                EachTableBody($"{no}. {productName[i] } ~ Price : ${productPrice[i]}  [{productStock[i]}] stock left");
+                EachTableBody("");
             }
         }
 
         private static void TampilkanHasilInput()
         {
-            Console.WriteLine("_____________________________________________________________\n");
-            Console.WriteLine("Product List:");
+            EachTableBody("Product List:");
             int no = 0;
             for (int i = 0; i < productName.Count; i++)
             {
                 no++;
-                Console.WriteLine($"{no}. { productName[i]}");
-                Console.WriteLine($"\t -Stock {productStock[i]} item");
-                Console.WriteLine($"\t -Price ${productPrice[i]}");
-                Console.WriteLine("");
+                EachTableBody($"{no}. { productName[i]}");
+                EachTableBody($" -Stock {productStock[i]} item");
+                EachTableBody($" -price ${productPrice[i]}");
+                EachTableBody("");
             }
-            Console.WriteLine("_____________________________________________________________\n");
 
         }
 
         static void InputProduk()
         {
-            Console.WriteLine("_____________________________________________________________\n");
-            Console.WriteLine("\t\t~Product Entry Selected ~");
-            Console.WriteLine("_____________________________________________________________\n");
+
             bool terusInput = true;
             while (terusInput)
             {
@@ -265,16 +282,16 @@ namespace ManajemenKasirMccRanur
                 int dataKe = 0;
                 string get = "";
                 dataKe++;
-                Console.WriteLine($"\t [{productName.Count}] th Product Entry");
+                EachTableBody($" [{productName.Count}] th Product Entry");
                 
                     for(int index = 0; index < listForm.Length; index++)
                 {
-                    Console.Write($"Enter Product {listForm[index]}  \t:");
+                    Console.Write($"Enter Product {listForm[index]}  :");
                     get = Console.ReadLine();
                     if (get == "Q" || get == "q")
                     {
                         terusInput = false;
-                        Console.WriteLine("End Input");
+                        EachTableBody("End Input");
                         break;
                     }
                     else
@@ -291,16 +308,16 @@ namespace ManajemenKasirMccRanur
                                     price = Convert.ToDouble(get);
                                 }
                                 catch (FormatException e) {
-                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
-                                    Console.WriteLine($"Eror Exception: {e.Message}");
-                                    Console.WriteLine("");
+                                    EachTableBody($"{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    EachTableBody($"Eror Exception: {e.Message}");
+                                    EachTableBody("");
                                     index -= 1;
                                 }
                                 catch (Exception e)
                                 {
-                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
-                                    Console.WriteLine($"Eror Exception: {e.Message}");
-                                    Console.WriteLine("");
+                                    EachTableBody($"{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    EachTableBody($"Eror Exception: {e.Message}");
+                                    EachTableBody("");
                                     index -= 1;
                                 }
                                 break;
@@ -313,17 +330,17 @@ namespace ManajemenKasirMccRanur
                                 }
                                 catch (FormatException e)
                                 {
-                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must a number type");
-                                    Console.WriteLine($"Eror Exception: {e.Message}");
-                                    Console.WriteLine("");
+                                    EachTableBody($"{get} Wrong typing !! ~ {listForm[index]} it must a number type");
+                                    EachTableBody($"Eror Exception: {e.Message}");
+                                    EachTableBody("");
                                     index -= 1;
                                 }
                                 catch (Exception e)
                                 {
 
-                                    Console.WriteLine($"\t\t{get} Wrong typing !! ~ {listForm[index]} it must number as money type");
-                                    Console.WriteLine($"Error Exception: {e.Message}");
-                                    Console.WriteLine("");
+                                    EachTableBody($"{get} Wrong typing !! ~ {listForm[index]} it must number as money type");
+                                    EachTableBody($"Error Exception: {e.Message}");
+                                    EachTableBody("");
                                     index -= 1;
                                 }
 
@@ -334,7 +351,7 @@ namespace ManajemenKasirMccRanur
                 }
                // index = 0;
             }
-            Console.WriteLine("return to menu . .\n\n\n");
+            EachTableBody("return to menu . .");
 
 
         }
