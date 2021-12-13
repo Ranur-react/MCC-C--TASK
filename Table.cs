@@ -10,7 +10,7 @@ namespace Manajemen_Kasir_MCC_Ranur
 		public int x = 60;
 		public String DefaultBodySpace = " ";
 		public Layout()
-		{
+		{ 
 			//constructor;
 		}
 		public Layout(int v)
