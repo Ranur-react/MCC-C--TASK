@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace ManajemenKasirMccRanur
 
 {
-    class Program
+    class _Program
     {
         public static string[] listMenu = new string[3] { "Entry Product", "Order Product", "Exit" };
         public static List<string> productName = new List<string>();
@@ -13,11 +13,11 @@ namespace ManajemenKasirMccRanur
         public static List<int> orderCode = new List<int>();
         public static List<int> orderQty = new List<int>();
         public static List<Double> orderPayCost = new List<Double>();
-        static void Main(string[] args)
+ /*       static void Main(string[] args)
         {
-            MainMenu();
+            //MainMenu();
             //new ProgramLayout();
-        }
+        }*/
 
         private static void MainMenu()
         {
@@ -89,6 +89,7 @@ namespace ManajemenKasirMccRanur
         {
             FormJualProduk();
         }
+        //ini dokumentasi form jual profuk
         static void FormJualProduk()
         {
             Console.WriteLine("_____________________________________________________________\n");
@@ -271,7 +272,9 @@ namespace ManajemenKasirMccRanur
                 {
                     Console.Write($"Enter Product {listForm[index]}  \t:");
                     get = Console.ReadLine();
-                    if (get == "Q" || get == "q")
+                    /*if (get == "Q" || get == "q")*/
+                        /*if (get.ToLower() =="q")*/
+                    if (get.Equals("q",StringComparison.OrdinalIgnoreCase))
                     {
                         terusInput = false;
                         Console.WriteLine("End Input");

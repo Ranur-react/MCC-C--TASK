@@ -31,7 +31,7 @@ namespace ManajemenKasirMccRanur
         }
         public static bool ShowMenu(string AppTitle)
         {
-            bool state = true;
+            bool state = true;  
             int index = 0;
             String decodeStringMenu = "";
             EachTableHeader(AppTitle);
@@ -90,7 +90,7 @@ namespace ManajemenKasirMccRanur
             tbodySpace ts = new tbodySpace();
             tb.setAlign("center");
             tb.setWidth(60);
-            tb.fieldHeader(v);
+            tb.FieldHeader(v);
         }
         private static void EachTableLine(string v)
         {
@@ -100,7 +100,7 @@ namespace ManajemenKasirMccRanur
             tbodySpace ts = new tbodySpace();
             tl.setAlign("center");
             tl.setWidth(60);
-            tl.field(v);
+            tl.Field(v);
         }
         private static void EachTableBody(string v)
         {
@@ -110,7 +110,7 @@ namespace ManajemenKasirMccRanur
             tbodySpace ts = new tbodySpace();
             ts.setAlign("left");
             ts.setWidth(60);
-            ts.field(v);
+            ts.Field(v);
         }
 
         private static void JualProduk()

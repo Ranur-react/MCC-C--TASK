@@ -49,7 +49,7 @@ namespace ManajemenKasirMccRanur
 			for (int i = 0; i < x; i++)
 			{
 				//rata tengah/ center align
-				if (align == "center" || align == "CENTER" || align == "Center")
+				if (align.ToLower() == "center")
 				{
 					if (i >= ((x - y) / 2) && i < (((x - y) / 2) + y))
 					{
@@ -62,7 +62,7 @@ namespace ManajemenKasirMccRanur
 					}
 				}
 				//rata kiri /left align
-				else if (align == "left" || align == "LEFT" || align == "Left")
+				else if (align.ToLower() == "left")
 				{
 					if (i < y)
 					{
@@ -99,7 +99,7 @@ namespace ManajemenKasirMccRanur
 		{
 			//consructor
 		}
-		public void fieldHeader(String body)
+		public void FieldHeader(String body)
 		{
 			Console.WriteLine(MarginSpace("=", ""));
 			Console.WriteLine(MarginSpace());
@@ -115,7 +115,7 @@ namespace ManajemenKasirMccRanur
 		{
 			//constructor
 		}
-		public virtual void field(String body)
+		public virtual void Field(String body)
 		{
 			Console.WriteLine(MarginSpace(" ", ""));
 			Console.WriteLine(MarginSpace(" ", body));
@@ -128,12 +128,13 @@ namespace ManajemenKasirMccRanur
 		{
 			//constructor
 		}
-		public override void field(String body)
+		public override void Field(String body)
 		{
 			Console.WriteLine(MarginSpace(" ", ""));
 			Console.WriteLine(MarginSpace(" ", body));
 			Console.WriteLine(MarginSpace("_", ""));
 		}
+
 	}
 	public class tbodySpace : tbody
 	{
@@ -141,7 +142,7 @@ namespace ManajemenKasirMccRanur
 		{
 			//constructor
 		}
-		public override void field(String body)
+		public override void Field(String body)
 		{
 			Console.WriteLine(MarginSpace(" ", ""));
 			Console.WriteLine(MarginSpace(" ", body));
